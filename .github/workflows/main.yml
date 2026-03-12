@@ -26,5 +26,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        # This runs your test script using Pipenv
         pipenv run python test_app.py

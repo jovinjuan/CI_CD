@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventaris Gudang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">📦 Sistem Manajemen Inventaris Sederhana</h1>
+
+        <form action="/add" method="POST" class="bg-white p-6 rounded-lg shadow-md mb-8 flex gap-4">
+            <input type="text" name="nama" placeholder="Nama Barang" class="border p-2 rounded w-full" required>
+            <input type="number" name="stok" placeholder="Stok" class="border p-2 rounded w-24" required>
+            <input type="text" name="kategori" placeholder="Kategori" class="border p-2 rounded w-full" required>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Tambah</button>
+        </form>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-gray-50 border-b">
+                    <tr>
+                        <th class="p-4">Nama Barang</th>
+                        <th class="p-4">Stok</th>
+                        <th class="p-4">Kategori</th>
+                        <th class="p-4 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-4">{{ item.nama }}</td>
+                        <td class="p-4 font-bold text-blue-600">{{ item.stok }}</td>
+                        <td class="p-4 text-gray-500">{{ item.kategori }}</td>
+                        <td class="p-4 text-center">
+                            <a href="/delete/{{ item.id }}" class="text-red-500 hover:underline">Hapus</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
