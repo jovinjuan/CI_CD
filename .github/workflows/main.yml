@@ -23,6 +23,7 @@ jobs:
 
     - name: Install Dependencies
       run: pipenv install --dev
+
     - name: Run Tests
       run: |
-        pipenv run pytest 
+        pipenv run python test_app.py
